@@ -1,17 +1,64 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import RootLayout from "./RootLayout"; // The layout component with the Navbar
+
+import App from "./App";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import TestAndServices from "./pages/TestAndServices";
+import BloodCP from "./tests/BloodCP";
+import UrineCP from "./tests/UrineCP";
+import ErrorPage from "./pages/ErrorPage";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootLayout />, // Navbar with Outlet Element inside this Element
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        // index: true => means if user goes to "/", render <App />
+        // The index route (index: true) means if the user goes exactly to /, we render <App />.
+
+        // path: "/",
+        index: true,
+        element: <App />,
+      },
+      {
+        path: "about",
+        element: <About />,
+      },
+      {
+        path: "contact",
+        element: <Contact />,
+      },
+      {
+        // A parent route for "Test and Services"
+        path: "test-and-services",
+        element: <TestAndServices />,
+        // Nested routes under "test-and-services"
+        children: [
+          {
+            path: "blood-test",
+            element: <BloodCP />,
+          },
+          {
+            path: "urine-test",
+            element: <UrineCP />,
+          },
+        ],
+      },
+    ],
+  },
+]);
+
+// 2) Render the RouterProvider with our custom router
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
