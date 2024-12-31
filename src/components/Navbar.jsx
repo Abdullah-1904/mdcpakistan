@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../pics/Logo.png"; // remove or update if using a URL instead
+import { ChevronDown } from "lucide-react";
 
 const Navbar = () => {
   // State to toggle mobile menu
@@ -13,7 +14,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className=" border-b border-gray-200 fixed w-full z-10">
+    <nav className="bg-white border-b border-gray-200 fixed w-full z-10">
       {/* <nav className="bg-blue-100 border-b border-gray-200 fixed w-full z-10"> */}
       <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
         <div className="flex items-center justify-between h-16">
@@ -48,7 +49,7 @@ const Navbar = () => {
               </Link>
               {/* DROPDOWN for Test & Services */}
               <div
-                className="relative"
+                className="relative inline-block"
                 onMouseEnter={() => setServicesOpen(true)}
                 onMouseLeave={() => setServicesOpen(false)}
               >
@@ -56,13 +57,29 @@ const Navbar = () => {
                   className="text-gray-700 hover:text-gray-900 px-3 py-2 text-lg font-medium focus:outline-none"
                   type="button"
                 >
-                  Test & Services
+                  <div className="flex items-center space-x-2">
+                    <span>Test & Services</span>
+                    <ChevronDown className="h-5 w-5 mt-[2px]" />
+                  </div>
                 </button>
+
                 {servicesOpen && (
-                  <div className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-100">
+                  <div
+                    className="
+        absolute 
+        top-full  /* so it sits right below the button */
+        left-0 
+        w-48 
+        bg-white 
+        rounded-md 
+        shadow-lg 
+        border 
+        border-gray-100
+      "
+                  >
                     <Link
                       to="/test-and-services/blood-test"
-                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100 border-b border-gray-200"
                     >
                       Blood Test
                     </Link>
@@ -75,6 +92,7 @@ const Navbar = () => {
                   </div>
                 )}
               </div>
+
               <Link
                 to="/contact"
                 className="text-gray-700 hover:text-gray-900 px-3 py-2 text-lg font-medium"
