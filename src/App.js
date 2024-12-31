@@ -19,16 +19,31 @@ const App = () => {
         "https://images.pexels.com/photos/4047146/pexels-photo-4047146.jpeg?auto=compress&cs=tinysrgb&w=600",
     },
     {
-      title: "Card 2 Title",
-      description: "Description for card 2.",
+      title: "ECG (Electro Cardiogram)",
+      description: (
+        <p style={{ textAlign: "justify" }}>
+          Electrocardiogram (ECG or EKG) is a diagnostic test that records the
+          electrical activity of the heart over time. It helps detect heart
+          conditions, monitor heart rhythm, and assess the overall heart health.
+        </p>
+      ),
       imageUrl:
-        "https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
+        "https://images.pexels.com/photos/6129683/pexels-photo-6129683.jpeg?auto=compress&cs=tinysrgb&w=600",
     },
     {
-      title: "Card 2 Title",
-      description: "Description for card 2.",
+      title: "Ultra Sound",
+      description: (
+        <p style={{ textAlign: "justify" }}>
+          Ultrasound is a medical imaging technique that uses high-frequency
+          sound waves to create real-time images of the body's internal
+          structures. <br />
+          It is commonly used for diagnosing conditions, monitoring pregnancies,
+          and guiding certain medical procedures.
+        </p>
+      ),
+
       imageUrl:
-        "https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
+        "https://images.pexels.com/photos/7088840/pexels-photo-7088840.jpeg?auto=compress&cs=tinysrgb&w=600",
     },
     // Add more card data here...
   ];
@@ -69,46 +84,48 @@ const App = () => {
       </div>
       {/* Cards */}
 
+      {/* 
       {/* ============ Carosel ======================================== */}
       {/* <div className="carousel carousel-vertical w-full h-screen overflow-auto"> */}
-      <div className="carousel carousel-vertical w-full">
-        {/* Slide 1: Blood Test */}
-        <div className="carousel-item relative w-full h-screen">
-          <img
-            src="https://img.daisyui.com/images/stock/photo-1559703248-dcaaec9fab78.webp"
-            alt="Blood Test"
-            className="object-cover w-full h-full"
-          />
-          <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-            <h2 className="text-white text-2xl font-bold">Blood Test</h2>
-          </div>
-        </div>
-        {/* Slide 2: Urine Test */}
-        <div className="carousel-item relative w-full h-screen">
-          <img
-            src="https://img.daisyui.com/images/stock/photo-1565098772267-60af42b81ef2.webp"
-            alt="Urine Test"
-            className="object-cover w-full h-full"
-          />
-          <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-            <h2 className="text-white text-2xl font-bold">Urine Test</h2>
-          </div>
-        </div>
-        {/* Slide 3: X-Ray */}
-        <div className="carousel-item relative w-full h-screen">
-          <img
-            src="https://img.daisyui.com/images/stock/photo-1572635148818-ef6fd45eb394.webp"
-            alt="X-Ray"
-            className="object-cover w-full h-full"
-          />
-          <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-            <h2 className="text-white text-2xl font-bold">X-Ray</h2>
-          </div>
-        </div>
-        {/* Add more slides for all the lab tests you offer */}
-      </div>
     </div>
   );
 };
 
 export default App;
+
+<div className="carousel carousel-vertical w-full">
+  {/* Slide 1: Blood Test */}
+  <div className="carousel-item relative w-full h-screen">
+    <img
+      src="https://img.daisyui.com/images/stock/photo-1559703248-dcaaec9fab78.webp"
+      alt="Blood Test"
+      className="object-cover w-full h-full"
+    />
+    <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+      <h2 className="text-white text-2xl font-bold">Blood Test</h2>
+    </div>
+  </div>
+  {/* Slide 2: Urine Test */}
+  <div className="carousel-item relative w-full h-screen">
+    <img
+      src="https://img.daisyui.com/images/stock/photo-1565098772267-60af42b81ef2.webp"
+      alt="Urine Test"
+      className="object-cover w-full h-full"
+    />
+    <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+      <h2 className="text-white text-2xl font-bold">Urine Test</h2>
+    </div>
+  </div>
+  {/* Slide 3: X-Ray */}
+  <div className="carousel-item relative w-full h-screen">
+    <img
+      src="https://img.daisyui.com/images/stock/photo-1572635148818-ef6fd45eb394.webp"
+      alt="X-Ray"
+      className="object-cover w-full h-full"
+    />
+    <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+      <h2 className="text-white text-2xl font-bold">X-Ray</h2>
+    </div>
+  </div>
+  {/* Add more slides for all the lab tests you offer */}
+</div>;
