@@ -45,6 +45,44 @@ const App = () => {
       imageUrl:
         "https://images.pexels.com/photos/7088840/pexels-photo-7088840.jpeg?auto=compress&cs=tinysrgb&w=600",
     },
+    {
+      title: "Free Home Sampling",
+      description: (
+        <p style={{ textAlign: "justify" }}>
+          We offer a unique free home sampling service, connecting patients in
+          the Barakaho region with quality care. Experience convenience and
+          trusted service right at your doorstep!
+        </p>
+      ),
+
+      imageUrl: require("./pics/Barakaho_Map.png"),
+    },
+    {
+      title: "Experienced Medical Team",
+      description: (
+        <p style={{ textAlign: "justify" }}>
+          Our diagnostic center has a skilled and experienced team ready to care
+          for and support our patients. We are here to provide the best service
+          for your health needs!
+        </p>
+      ),
+
+      imageUrl:
+        "https://images.pexels.com/photos/1170979/pexels-photo-1170979.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
+    },
+    {
+      title: "Launching Our First Center",
+      description: (
+        <p style={{ textAlign: "justify" }}>
+          We are proud to announce the opening of our first diagnostic center
+          branch in the Islamabad. Our skilled and experienced team is ready to
+          provide the best care for your health needs. This is just the
+          beginning, as we plan to expand our services to every city across
+          Pakistan in the near future!
+        </p>
+      ),
+      imageUrl: require("./pics/Faisal_mosque_1.jpg"),
+    },
     // Add more card data here...
   ];
   return (
