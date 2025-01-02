@@ -8,7 +8,7 @@ import {
 import { Link } from "react-router-dom";
 const Footer = () => {
   return (
-    <footer className="bg-gray-50 border-t border-gray-200 py-8">
+    <footer className="bg-gradient-to-r from-gray-100 to-gray-200 border-t border-gray-200 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Upper row: brand & social icons */}
         <div className="flex flex-col md:flex-row justify-between items-center">
