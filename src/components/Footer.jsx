@@ -17,9 +17,10 @@ const Footer = () => {
             <Link
               to="/"
               className="text-2xl font-bold text-gray-800 hover:text-gray-600"
+              // className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-red-400 bg-clip-text text-transparent hover:text-gray-600"
             >
               Mariam Diagnostic Center
-            </Link>
+            </Link>{" "}
           </div>
 
           {/* Social Media Icons */}
@@ -48,7 +49,7 @@ const Footer = () => {
               rel="noreferrer"
               className="text-gray-600 hover:text-pink-600 transition-colors"
             >
-              <FaInstagram size={20} />
+              <FaInstagram size={25} />
             </a>
             <a
               href="https://www.linkedin.com/company/mariam-diagnostic-center"
@@ -56,7 +57,7 @@ const Footer = () => {
               rel="noreferrer"
               className="text-gray-600 hover:text-blue-700 transition-colors"
             >
-              <FaLinkedinIn size={20} />
+              <FaLinkedinIn size={25} />
             </a>
           </div>
         </div>

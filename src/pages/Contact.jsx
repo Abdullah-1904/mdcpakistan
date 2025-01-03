@@ -6,7 +6,7 @@ const Contact = () => {
   return (
     <div>
       <Helmet>
-        <title>About Us - Mariam Diagnostic Center</title>
+        <title>Contact Us - Mariam Diagnostic Center</title>
         <meta
           name="description"
           content="Learn more about Mariam Diagnostic Center, a trusted name in diagnostics since 2013."

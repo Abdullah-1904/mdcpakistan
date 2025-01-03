@@ -1,8 +1,16 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Cards from "./components/Cards";
+import { Helmet } from "react-helmet";
 
 const App = () => {
+  <Helmet>
+    <meta
+      name="description"
+      content="Best Diagnostic Center in Islamabad catering to patients with care"
+    />
+    <title>Mariam Diagnostic Center</title>
+  </Helmet>;
   const cardData = [
     {
       title: "Blood CP (Complete Picture)",
@@ -89,23 +97,31 @@ const App = () => {
     <div>
       {/* Animated text container */}
       <motion.div
-        // Start hidden and slightly below its final position
-        initial={{ opacity: 0, y: 40 }}
-        // Animate to fully visible and y=0 when in view
-        whileInView={{ opacity: 1, y: 0 }}
-        // Animation config
+        initial={{ opacity: 0, y: 40, scale: 0.9 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 1.8, ease: "easeOut" }}
-        // Makes sure the animation only triggers once
         viewport={{ once: true }}
         className="flex justify-center items-center h-screen"
       >
         <div className="flex flex-col items-center text-center px-4">
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-gray-800 mb-2">
+          {/* Heading with delayed animation for text appearance */}
+          <motion.h1
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 1.2, ease: "easeOut" }}
+            className="text-3xl sm:text-4xl md:text-6xl font-bold text-gray-800 mb-2"
+          >
             Mariam Diagnostic Center
-          </h1>
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-600">
+          </motion.h1>
+          {/* Sub-heading with staggered text animation */}
+          <motion.h2
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 1.2, ease: "easeOut" }}
+            className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-600"
+          >
             MDC Your Trusted Diagnostic Center
-          </h2>
+          </motion.h2>
         </div>
       </motion.div>
 
