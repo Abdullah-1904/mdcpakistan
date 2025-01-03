@@ -1,9 +1,21 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet";
 
 const Contact = () => {
   return (
     <div>
+      <Helmet>
+        <title>About Us - Mariam Diagnostic Center</title>
+        <meta
+          name="description"
+          content="Learn more about Mariam Diagnostic Center, a trusted name in diagnostics since 2013."
+        />
+        <meta
+          name="keywords"
+          content="Diagnostics, Medical Tests, Healthcare, Best Diagnostic Center"
+        />
+      </Helmet>
       <div className="min-h-screen bg-gradient-to-r from-blue-50 to-blue-100 p-10 m-10 rounded-2xl">
         <motion.div
           className="text-center mb-10"

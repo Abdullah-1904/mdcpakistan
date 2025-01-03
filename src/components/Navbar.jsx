@@ -153,7 +153,7 @@ const Navbar = () => {
       {/* MOBILE MENU */}
       {isOpen && (
         <div
-          className="md:hidden bg-blue-100 border-t border-gray-200"
+          className="md:hidden bg-gradient-to-r from-white to-gray-100  border-t border-gray-200"
           id="mobile-menu"
         >
           <div className="px-2 pt-2 pb-3 space-y-1">
