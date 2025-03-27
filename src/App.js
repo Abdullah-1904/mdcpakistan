@@ -79,7 +79,7 @@ const App = () => {
         "https://images.pexels.com/photos/1170979/pexels-photo-1170979.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
     },
     {
-      title: "Launching Our First Center",
+      title: "Our First Center",
       description: (
         <p style={{ textAlign: "justify" }}>
           We are proud to announce the opening of our first diagnostic center
