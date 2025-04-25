@@ -10,8 +10,10 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import TestAndServices from "./pages/TestAndServices";
 import BloodCP from "./tests/BloodCP";
-import UrineCP from "./tests/UrineCP";
+import SpecialChemistry from "./tests/SpecialChemistry";
 import ErrorPage from "./pages/ErrorPage";
+import Ultrasound from "./tests/Ultrasound";
+import ECG from "./tests/ECG";
 
 const router = createBrowserRouter([
   {
@@ -46,8 +48,16 @@ const router = createBrowserRouter([
             element: <BloodCP />,
           },
           {
-            path: "urine-test",
-            element: <UrineCP />,
+            path: "special-chemistry",
+            element: <SpecialChemistry />,
+          },
+          {
+            path: "ultrasound",
+            element: <Ultrasound />,
+          },
+          {
+            path: "ecg",
+            element: <ECG />,
           },
         ],
       },

@@ -48,50 +48,12 @@ const Navbar = () => {
                 About
               </Link>
               {/* DROPDOWN for Test & Services */}
-              <div
-                className="relative inline-block"
-                onMouseEnter={() => setServicesOpen(true)}
-                onMouseLeave={() => setServicesOpen(false)}
+              <Link
+                to="/test-and-services"
+                className="text-gray-700 hover:text-gray-900 px-3 py-2 text-lg font-medium"
               >
-                <button
-                  className="text-gray-700 hover:text-gray-900 px-3 py-2 text-lg font-medium focus:outline-none"
-                  type="button"
-                >
-                  <div className="flex items-center space-x-2">
-                    <span>Test & Services</span>
-                    <ChevronDown className="h-5 w-5 mt-[2px]" />
-                  </div>
-                </button>
-
-                {servicesOpen && (
-                  <div
-                    className="
-        absolute 
-        top-full  /* so it sits right below the button */
-        left-0 
-        w-48 
-        bg-white 
-        rounded-md 
-        shadow-lg 
-        border 
-        border-gray-100
-      "
-                  >
-                    <Link
-                      to="/test-and-services/blood-test"
-                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100 border-b border-gray-200"
-                    >
-                      Blood Test
-                    </Link>
-                    <Link
-                      to="/test-and-services/urine-test"
-                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
-                    >
-                      Urine Test
-                    </Link>
-                  </div>
-                )}
-              </div>
+                Test & Services
+              </Link>
 
               <Link
                 to="/contact"
@@ -153,7 +115,7 @@ const Navbar = () => {
       {/* MOBILE MENU */}
       {isOpen && (
         <div
-          className="md:hidden bg-gradient-to-r from-white to-gray-100  border-t border-gray-200"
+          className="md:hidden bg-gradient-to-r from-white to-gray-100 border-t border-gray-200"
           id="mobile-menu"
         >
           <div className="px-2 pt-2 pb-3 space-y-1">
@@ -171,7 +133,6 @@ const Navbar = () => {
             >
               About
             </Link>
-            {/* Test & Services (mobile) */}
             <Link
               to="/test-and-services"
               className="block text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-base font-medium"
@@ -194,3 +155,6 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+// ==============
+// ==============

@@ -8,62 +8,59 @@ const fadeInOut = {
   exit: { opacity: 0, filter: "blur(5px)" },
 };
 
-const bloodTests = [
+const ultrasoundServices = [
   {
-    title: "Complete Blood Count (CBC)",
+    title: "Pelvic Ultrasound",
     description:
-      "Analyze red and white blood cells, platelets, hemoglobin, and hematocrit — essential for detecting infections, anemia, and other conditions.",
+      "A detailed scan to assess the uterus, ovaries, fallopian tubes, and bladder. Essential for diagnosing gynecological conditions.",
   },
   {
-    title: "Hemoglobin & Hematocrit",
+    title: "Abdominal-Pelvic Ultrasound",
     description:
-      "Monitor oxygen-carrying capacity of blood and detect anemia or dehydration.",
+      "Covers both abdominal and pelvic organs. Useful for evaluating kidneys, liver, uterus, and related structures.",
   },
   {
-    title: "Platelet Count",
+    title: "Anomaly Scan",
     description:
-      "Assess blood clotting ability, crucial for surgery prep and bleeding disorders.",
-  },
-  {
-    title: "White Blood Cell Differential",
-    description:
-      "Identify infections, allergic responses, or immune system irregularities by analyzing WBC types.",
+      "A critical second-trimester pregnancy scan to detect fetal abnormalities and ensure healthy development.",
   },
 ];
 
-const BloodCP = () => {
+const Ultrasound = () => {
   return (
     <div className="min-h-screen px-4 py-10 md:p-10 m-4 md:m-10 rounded-2xl">
       <Helmet>
-        <title>Blood Tests - Mariam Diagnostic Center</title>
+        <title>Ultrasound Services - Mariam Diagnostic Center</title>
         <meta
           name="description"
-          content="We provide a wide range of blood tests using the latest hematology analyzers at Mariam Diagnostic Center, Bhara Kahu."
+          content="Explore professional ultrasound services at Mariam Diagnostic Center, including pelvic, abdominal and anomaly scans performed by experienced gynecologist."
         />
         <meta
           name="keywords"
-          content="Blood Test, CBC, Platelet Count, Hemoglobin, Diagnostic Lab, Bhara Kahu"
+          content="Ultrasound, Pelvic Scan, Abdominal Scan, Anomaly Scan, Gynecologist Ultrasound, MDC Bhara Kahu"
         />
       </Helmet>
 
       {/* Hero Section */}
       <motion.div
-        className="text-center mb-10 bg-gradient-to-r from-red-100 to-red-200 p-10 rounded-3xl shadow-xl"
+        className="text-center mb-10 bg-gradient-to-r from-blue-100 to-blue-200 p-10 rounded-3xl shadow-xl"
         initial={{ opacity: 0, y: -40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <h1 className="text-4xl font-bold text-red-900 mb-3">Blood Tests</h1>
+        <h1 className="text-4xl font-bold text-blue-900 mb-3">
+          Ultrasound Services
+        </h1>
         <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-          We offer a full range of blood tests using the latest hematology
-          analyzer to ensure fast, accurate, and reliable results for patients
-          of all ages.
+          We offer high-resolution ultrasound imaging performed by experienced
+          specialists using modern equipment to ensure accurate diagnostics and
+          patient comfort.
         </p>
       </motion.div>
 
-      {/* Tests List */}
+      {/* Services List */}
       <div className="space-y-12">
-        {bloodTests.map((test, index) => (
+        {ultrasoundServices.map((service, index) => (
           <motion.div
             key={index}
             className={`flex flex-col md:flex-row items-center gap-6 p-8 rounded-[60px] bg-white/40 backdrop-blur-sm shadow-md transition duration-500 ${
@@ -77,17 +74,17 @@ const BloodCP = () => {
           >
             <div className="text-left max-w-xl">
               <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                {test.title}
+                {service.title}
               </h2>
               <p className="text-gray-700 leading-relaxed">
-                {test.description}
+                {service.description}
               </p>
             </div>
           </motion.div>
         ))}
       </div>
 
-      {/* Note */}
+      {/* Footer Note */}
       <motion.div
         className="mt-16 text-center"
         initial={{ opacity: 0, y: 30 }}
@@ -96,25 +93,15 @@ const BloodCP = () => {
         viewport={{ once: true }}
       >
         <h3 className="text-xl font-semibold text-gray-800 mb-2">
-          Timings & Location
+          Timings for Ultrasound Services
         </h3>
         <p className="text-md text-gray-600">
-          Blood tests are available daily from{" "}
-          <strong>9:00 AM to 8:00 PM</strong>
-          <br />
-          Location: <strong>Bhara Kahu, Islamabad</strong>
+          Performed by <strong>Dr. Naheed Saif</strong> <br />
+          Monday to Saturday — <strong>9:00 AM to 12:00 Noon</strong>
         </p>
-        <a
-          href="https://maps.app.goo.gl/7wa3zNbi5DKatsHdA?g_st=com.google.maps.preview.copy"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-gray-700 underline hover:text-blue-600"
-        >
-          <b> Mariam Diagnostic Center </b>
-        </a>
       </motion.div>
     </div>
   );
 };
 
-export default BloodCP;
+export default Ultrasound;
