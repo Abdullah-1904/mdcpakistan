@@ -122,29 +122,32 @@ Timing: 9:00 Morning to 12:00 Noon (Mon–Sat)`,
 
           {/* Google Maps Section */}
           <motion.section
-            className="flex flex-col items-center justify-center mx-10 my-10 p-12 rounded-2xl   text-gray-900"
+            className="flex flex-col items-center justify-center px-4 py-8 sm:px-8 sm:py-12 mx-auto max-w-7xl"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl font-extrabold mb-6">Visit Us</h2>
-            <div className="inline-flex items-center bg-blue-500/20 backdrop-blur-sm rounded-full px-6 py-3 mb-8">
-              <MapPin className="w-6 h-6 text-blue-600 mr-2" />
-              <span className="font-medium text-blue-700">
-                Sharjah Plaza, Simly Dam Rd, Bhara Kahu, Islamabad
-              </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-center mb-6">
+              Visit Us
+            </h2>
+
+            <div className="flex items-center bg-blue-100 rounded-full px-5 py-2 mb-8 text-blue-700 text-sm sm:text-base">
+              <MapPin className="w-5 h-5 sm:w-6 sm:h-6 mr-2" />
+              Sharjah Plaza, Simly Dam Rd, Bhara Kahu, Islamabad
             </div>
-            <div className="w-full max-w-4xl rounded-2xl overflow-hidden border border-gray-200 shadow-2xl">
-              <iframe
-                src="https://maps.google.com/maps?q=Mariam%20Diagnostic%20Center%20Bhara%20Kahu%20Islamabad&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                width="100%"
-                height="450"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                title="Mariam Diagnostic Center Location"
-              />
+
+            <div className="w-full px-4 sm:px-0">
+              <div className="relative overflow-hidden rounded-2xl shadow-2xl border border-gray-300 w-full h-64 sm:h-96">
+                <iframe
+                  className="absolute top-0 left-0 w-full h-full"
+                  src="https://maps.google.com/maps?q=Mariam%20Diagnostic%20Center%20Bhara%20Kahu%20Islamabad&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  title="Mariam Diagnostic Center Location"
+                />
+              </div>
             </div>
           </motion.section>
         </div>
