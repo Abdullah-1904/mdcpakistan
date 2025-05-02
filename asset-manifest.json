@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.f208ff4d.css",
-    "main.js": "/static/js/main.bb200d63.js",
+    "main.css": "/static/css/main.65646b73.css",
+    "main.js": "/static/js/main.8dae040f.js",
     "static/media/Faisal_mosque_1.jpg": "/static/media/Faisal_mosque_1.b33fefbb19b684364902.jpg",
     "static/media/Barakaho_Map.png": "/static/media/Barakaho_Map.5926c1ecb4a439adc676.png",
     "static/media/Logo.png": "/static/media/Logo.ab2c303c7baf9e06768b.png",
     "index.html": "/index.html",
-    "main.f208ff4d.css.map": "/static/css/main.f208ff4d.css.map",
-    "main.bb200d63.js.map": "/static/js/main.bb200d63.js.map"
+    "main.65646b73.css.map": "/static/css/main.65646b73.css.map",
+    "main.8dae040f.js.map": "/static/js/main.8dae040f.js.map"
   },
   "entrypoints": [
-    "static/css/main.f208ff4d.css",
-    "static/js/main.bb200d63.js"
+    "static/css/main.65646b73.css",
+    "static/js/main.8dae040f.js"
   ]
 }
