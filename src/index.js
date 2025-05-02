@@ -14,30 +14,27 @@ import SpecialChemistry from "./tests/SpecialChemistry";
 import ErrorPage from "./pages/ErrorPage";
 import Ultrasound from "./tests/Ultrasound";
 import ECG from "./tests/ECG";
-
+// using HashRouter not BrowserRouter
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <HashRouter>
-      <RootLayout>
-        <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/test-and-services" element={<TestAndServices />} />
-          <Route path="/test-and-services/blood-test" element={<BloodCP />} />
+      <Routes>
+        <Route path="/" element={<RootLayout />}>
+          <Route index element={<App />} />
+          <Route path="about" element={<About />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="test-and-services" element={<TestAndServices />} />
+          <Route path="test-and-services/blood-test" element={<BloodCP />} />
           <Route
-            path="/test-and-services/special-chemistry"
+            path="test-and-services/special-chemistry"
             element={<SpecialChemistry />}
           />
-          <Route
-            path="/test-and-services/ultrasound"
-            element={<Ultrasound />}
-          />
-          <Route path="/test-and-services/ecg" element={<ECG />} />
+          <Route path="test-and-services/ultrasound" element={<Ultrasound />} />
+          <Route path="test-and-services/ecg" element={<ECG />} />
           <Route path="*" element={<ErrorPage />} />
-        </Routes>
-      </RootLayout>
+        </Route>
+      </Routes>
     </HashRouter>
   </React.StrictMode>
 );
