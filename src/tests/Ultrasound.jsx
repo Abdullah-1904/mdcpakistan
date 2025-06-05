@@ -10,19 +10,39 @@ const fadeInOut = {
 
 const ultrasoundServices = [
   {
-    title: "Pelvic Ultrasound",
+    title: "Abdomen Ultrasound",
     description:
-      "A detailed scan to assess the uterus, ovaries, fallopian tubes, and bladder. Essential for diagnosing gynecological conditions.",
-  },
-  {
-    title: "Abdominal-Pelvic Ultrasound",
-    description:
-      "Covers both abdominal and pelvic organs. Useful for evaluating kidneys, liver, uterus, and related structures.",
+      "A scan to evaluate abdominal organs like the liver, gallbladder, pancreas, kidneys, and spleen. Useful in detecting stones, cysts, and inflammation.",
   },
   {
     title: "Anomaly Scan",
     description:
-      "A critical second-trimester pregnancy scan to detect fetal abnormalities and ensure healthy development.",
+      "A detailed second-trimester pregnancy scan that helps detect structural abnormalities in the fetus. Essential for prenatal diagnosis.",
+  },
+  {
+    title: "Female Abdominal Ultrasound",
+    description:
+      "Used to evaluate the lower abdominal area in females, especially for gynecological and bladder-related conditions.",
+  },
+  {
+    title: "Fetal Wellbeing (FWB)",
+    description:
+      "Checks the baby's heartbeat, movements, amniotic fluid, and overall health in the later stages of pregnancy.",
+  },
+  {
+    title: "KUB + Prostate + Abdomen",
+    description:
+      "A comprehensive scan for kidneys, urinary bladder, prostate, and abdominal organs. Helps diagnose urinary and abdominal disorders in males.",
+  },
+  {
+    title: "KUB Female",
+    description:
+      "Ultrasound of kidneys, ureters, and bladder in females. Useful for evaluating infections, stones, and bladder function.",
+  },
+  {
+    title: "Pelvic Ultrasound",
+    description:
+      "Focuses on female reproductive organs including uterus, ovaries, and fallopian tubes. Commonly used for fertility and menstrual issues.",
   },
 ];
 
@@ -98,7 +118,17 @@ const Ultrasound = () => {
         <p className="text-md text-gray-600">
           Performed by <strong>Dr. Naheed Saif</strong> <br />
           Monday to Saturday — <strong>9:00 AM to 12:00 Noon</strong>
+          <br />
+          Location: <strong>Bhara Kahu, Islamabad</strong>
         </p>
+        <a
+          href="https://maps.app.goo.gl/7wa3zNbi5DKatsHdA?g_st=com.google.maps.preview.copy"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-700 underline hover:text-blue-600"
+        >
+          <b> Mariam Diagnostic Center </b>
+        </a>
       </motion.div>
     </div>
   );

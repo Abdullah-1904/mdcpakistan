@@ -29,6 +29,11 @@ const bloodTests = [
     description:
       "Identify infections, allergic responses, or immune system irregularities by analyzing WBC types.",
   },
+  {
+    title: "And More...",
+    description:
+      "This is only a part of the extensive range of blood tests we offer. Visit Mariam Diagnostic Center or contact us to explore the full list tailored to your healthcare needs.",
+  },
 ];
 
 const BloodCP = () => {

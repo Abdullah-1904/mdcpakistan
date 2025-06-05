@@ -4,8 +4,18 @@ const Cards = ({ title, description, imageUrl }) => {
   return (
     <div className="bg-white shadow-md rounded-md overflow-hidden max-w-sm m-4 flex flex-col">
       {/* Image */}
-      <img src={imageUrl} alt={title} className="w-full h-48 object-cover" />
-
+      {/* <img src={imageUrl} alt={title} className="w-full h-48 object-cover" /> */}
+      <div className="w-full h-48 object-cover">
+        {typeof imageUrl === "string" ? (
+          <img
+            src={imageUrl}
+            alt={title}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          imageUrl
+        )}
+      </div>
       {/* Content */}
       <div className="p-4 flex flex-col flex-grow">
         <h3 className="text-xl font-semibold mb-2 text-gray-800">{title}</h3>

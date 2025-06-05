@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Cards from "./components/Cards";
 import { Helmet } from "react-helmet";
+import { FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
 
 const App = () => {
   <Helmet>
@@ -88,8 +89,17 @@ const App = () => {
           trusted service right at your doorstep!
         </p>
       ),
-
-      imageUrl: require("./pics/Barakaho_Map.png"),
+      imageUrl: (
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3317.8413287898443!2d73.18554019999999!3d33.7389189!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfc396a431e4f7%3A0x58f2111610bf8f84!2sMariam%20Diagnostic%20Center%20-%20MDC!5e0!3m2!1sen!2s!4v1749153676230!5m2!1sen!2s"
+          width="100%"
+          height="200"
+          style={{ border: 0 }}
+          allowFullScreen=""
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        />
+      ),
     },
     {
       title: "Experienced Medical Team",
@@ -168,6 +178,28 @@ const App = () => {
       {/* 
       {/* ============ Carosel ======================================== */}
       {/* <div className="carousel carousel-vertical w-full h-screen overflow-auto"> */}
+
+      <div className="flex justify-center mt-12 space-x-6">
+        {/* Call Now Button */}
+        <a
+          href="tel:+923306326321"
+          className="bg-blue-500 hover:bg-blue-700 text-white text-lg font-bold py-4 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 hover-shake flex items-center space-x-2"
+        >
+          <FaPhoneAlt />
+          <span>Call Now</span>
+        </a>
+
+        {/* View Address Button */}
+        <a
+          href="https://www.google.com/maps?q=Mariam+Diagnostic+Center+Bhara+Kahu"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-red-500 hover:bg-red-700 text-white text-lg font-bold py-4 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 hover-shake flex items-center space-x-2"
+        >
+          <FaMapMarkerAlt />
+          <span>View Address</span>
+        </a>
+      </div>
     </div>
   );
 };
