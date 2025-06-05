@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirecting...</title>
+    <script type="text/javascript">
+      // This script handles the redirection for GitHub Pages when a direct URL or refresh occurs.
+      // It ensures that all paths are routed through your React application's index.html.
+
+      // Define the repository name. This MUST EXACTLY match your GitHub repository name.
+      // For your repository 'Abdullah-1904/mdcpakistan', the name is 'mdcpakistan'.
+      const repoName = "mdcpakistan";
+
+      // Determine if the current deployment is a Project Page (e.g., username.github.io/repo-name/)
+      // or a User/Organization Page (e.g., username.github.io/).
+      // Project pages require the repository name in the URL path.
+      const isProjectPage = window.location.pathname.startsWith(
+        `/${repoName}/`
+      );
+
+      // Set the base path. For project pages, it includes the repo name; otherwise, it's just '/'.
+      const basePath = isProjectPage ? `/${repoName}/` : "/";
+
+      // Construct the target path for redirection.
+      // If it's a project page, we need to remove the repository name from the path
+      // so that React Router receives the clean, expected path (e.g., /about instead of /mdcpakistan/about).
+      const targetPath = isProjectPage
+        ? window.location.pathname.substring(basePath.length)
+        : window.location.pathname.slice(1); // For root pages, remove the leading '/'
+
+      // Perform the redirection.
+      // This loads the index.html (your React app) at the base path,
+      // and then React Router will handle the `targetPath` client-side.
+      window.location.replace(basePath + targetPath + window.location.search);
+    </script>
+    <style>
+      /* Basic styling for the redirection page */
+      body {
+        font-family: "Inter", sans-serif; /* Using Inter font as per instructions */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        background-color: #f0f2f5;
+        color: #333;
+        text-align: center;
+      }
+      p {
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+      a {
+        color: #007bff;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      If you are not redirected automatically, follow this <a href="/">link</a>.
+    </p>
+  </body>
+</html>
