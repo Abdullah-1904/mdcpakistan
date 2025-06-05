@@ -54,6 +54,32 @@ const App = () => {
         "https://images.pexels.com/photos/7088840/pexels-photo-7088840.jpeg?auto=compress&cs=tinysrgb&w=600",
     },
     {
+      title: "Child Specialist",
+      description: (
+        <p style={{ textAlign: "justify" }}>
+          At MDC, our Child Specialist is dedicated to providing comprehensive
+          healthcare for infants, children, and adolescents. We ensure your
+          child’s health, development, and wellbeing are carefully monitored and
+          supported.
+        </p>
+      ),
+      imageUrl:
+        "https://images.pexels.com/photos/3662664/pexels-photo-3662664.jpeg?auto=compress&cs=tinysrgb&w=600", // or your own image
+    },
+    {
+      title: "Gynecologist",
+      description: (
+        <p style={{ textAlign: "justify" }}>
+          Our experienced Gynecologist offers expert care for women’s
+          reproductive health, including pregnancy monitoring, menstrual issues,
+          and overall wellness. We prioritize comfort, trust, and top-quality
+          women’s healthcare.
+        </p>
+      ),
+      imageUrl:
+        "https://images.pexels.com/photos/7088526/pexels-photo-7088526.jpeg?auto=compress&cs=tinysrgb&w=600", // or your own image
+    },
+    {
       title: "Free Home Sampling",
       description: (
         <p style={{ textAlign: "justify" }}>
@@ -91,6 +117,7 @@ const App = () => {
       ),
       imageUrl: require("./pics/Faisal_mosque_1.jpg"),
     },
+
     // Add more card data here...
   ];
   return (
