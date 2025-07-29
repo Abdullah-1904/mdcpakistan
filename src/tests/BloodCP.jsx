@@ -105,7 +105,7 @@ const BloodCP = () => {
         </h3>
         <p className="text-md text-gray-600">
           Blood tests are available daily from{" "}
-          <strong>9:00 AM to 8:00 PM</strong>
+          <strong>9:00 AM to 9:00 PM</strong>
           <br />
           Location: <strong>Bhara Kahu, Islamabad</strong>
         </p>
