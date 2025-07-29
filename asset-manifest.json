@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/static/css/main.02edad0a.css",
-    "main.js": "/static/js/main.c14914cb.js",
+    "main.js": "/static/js/main.b53af8d4.js",
     "static/media/Faisal_mosque_1.jpg": "/static/media/Faisal_mosque_1.b33fefbb19b684364902.jpg",
     "static/media/Logo.png": "/static/media/Logo.ab2c303c7baf9e06768b.png",
     "index.html": "/index.html",
     "main.02edad0a.css.map": "/static/css/main.02edad0a.css.map",
-    "main.c14914cb.js.map": "/static/js/main.c14914cb.js.map"
+    "main.b53af8d4.js.map": "/static/js/main.b53af8d4.js.map"
   },
   "entrypoints": [
     "static/css/main.02edad0a.css",
-    "static/js/main.c14914cb.js"
+    "static/js/main.b53af8d4.js"
   ]
 }
