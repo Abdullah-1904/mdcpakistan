@@ -3,6 +3,30 @@ import { motion } from "framer-motion";
 import Cards from "./components/Cards";
 import { Helmet } from "react-helmet";
 import { FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
+// ReviewCarousel.jsx
+import { FaStar } from "react-icons/fa";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Pagination, Autoplay } from "swiper/modules";
+
+const reviews = [
+  {
+    name: "Afshan Abbasi",
+    text: "I recently visited MDC and was thoroughly impressed with the experience. The lab maintains excellent hygiene standards, which is a top priority in any medical setting.",
+    rating: 5,
+  },
+  {
+    name: "Rida Wasiq",
+    text: "I had an excellent experience at MDC.The cleanliness and organization of the facility were truly impressive, creating a comfortable and hygienic environment for patients.",
+    rating: 5,
+  },
+  {
+    name: "Raja Salman",
+    text: "The laboratory was unexpectedly very clean and the rates are reasonable.",
+    rating: 5,
+  },
+];
 
 const App = () => {
   <Helmet>
@@ -179,7 +203,7 @@ const App = () => {
       {/* ============ Carosel ======================================== */}
       {/* <div className="carousel carousel-vertical w-full h-screen overflow-auto"> */}
 
-      <div className="flex justify-center mt-12 space-x-6">
+      <div className="flex justify-center mt-12 mb-8 space-x-6">
         {/* Call Now Button */}
         <a
           href="tel:+923306326321"
@@ -200,6 +224,57 @@ const App = () => {
           <span>View Address</span>
         </a>
       </div>
+      {/* google review section below */}
+
+      <section className=" py-12 px-4">
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
+          What Our Patients Say
+        </h2>
+
+        <Swiper
+          modules={[Pagination, Autoplay]}
+          pagination={{ clickable: true }}
+          autoplay={{ delay: 5000 }}
+          spaceBetween={30}
+          slidesPerView={1}
+          breakpoints={{
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+        >
+          {reviews.map((review, index) => (
+            <SwiperSlide key={index}>
+              <div className="bg-white/40 backdrop-blur-md border border-gray-300 shadow-xl rounded-2xl p-6 mx-2 h-[300px] flex flex-col justify-between hover:shadow-2xl hover:scale-[1.02] transition duration-300">
+                <div className="text-yellow-500 text-sm flex gap-1 mb-1">
+                  {[...Array(review.rating)].map((_, i) => (
+                    <FaStar key={i} />
+                  ))}
+                </div>
+
+                <p className="text-gray-700 italic text-base leading-relaxed mt-2 mb-6">
+                  “{review.text}”
+                </p>
+
+                <div className="text-right text-gray-900 font-bold text-sm">
+                  — {review.name}
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        <div className="text-center mt-6">
+          <a
+            href="https://maps.app.goo.gl/7wa3zNbi5DKatsHdA?g_st=com.google.maps.preview.copy"
+            target="_blank"
+            rel="noreferrer"
+            className="text-blue-600 hover:underline font-medium"
+          >
+            See More Reviews on Google
+          </a>
+        </div>
+      </section>
+      {/* google review section code*/}
     </div>
   );
 };
