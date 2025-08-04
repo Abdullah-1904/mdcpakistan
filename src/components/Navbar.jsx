@@ -61,6 +61,12 @@ const Navbar = () => {
               >
                 Contact
               </Link>
+              <Link
+                to="/careers"
+                className="text-gray-700 hover:text-gray-900 px-3 py-2 text-lg font-medium"
+              >
+                Careers
+              </Link>
             </div>
           </div>
 
@@ -146,6 +152,13 @@ const Navbar = () => {
               onClick={() => setIsOpen(false)}
             >
               Contact
+            </Link>
+            <Link
+              to="/careers"
+              className="block text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-base font-medium"
+              onClick={() => setIsOpen(false)}
+            >
+              Careers
             </Link>
           </div>
         </div>

@@ -14,6 +14,7 @@ import SpecialChemistry from "./tests/SpecialChemistry";
 import ErrorPage from "./pages/ErrorPage";
 import Ultrasound from "./tests/Ultrasound";
 import ECG from "./tests/ECG";
+import Careers from "./pages/Careers";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "contact",
         element: <Contact />,
+      },
+      {
+        path: "careers",
+        element: <Careers />,
       },
       {
         // A parent route for "Test and Services"
