@@ -7,25 +7,29 @@
     "@heroicons/react": "^2.2.0",
     "@material-tailwind/react": "^2.1.10",
     "cra-template": "1.2.0",
-    "framer-motion": "^10.18.0",
+    "framer-motion": "^10.16.0",
     "lucide-react": "^0.469.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "react-helmet": "^6.1.0",
     "react-icons": "^5.4.0",
-    "react-router-dom": "^7.1.1",
-    "react-scripts": "^5.0.1",
+    "react-router-dom": "^7.6.3",
+    "react-scripts": "5.0.1",
     "sitemap-webpack-plugin": "^1.1.1",
     "swiper": "^11.2.10",
     "typewriter-effect": "^2.22.0"
   },
+  "resolutions": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "npm run build"
   },
   "eslintConfig": {
     "extends": [
@@ -47,6 +51,7 @@
   },
   "devDependencies": {
     "gh-pages": "^6.2.0",
+    "npm-force-resolutions": "^0.0.10",
     "tailwindcss": "^3.4.17"
   }
 }
