@@ -27,6 +27,13 @@ Timing: 9:00 Morning to 12:00 Noon (Mon–Sat)`,
       image: "https://via.placeholder.com/150",
     },
     {
+      name: "DR. EJAZ KHAN YOUSAFZAI",
+      role: `MBBS (SZABMU) ISLAMABAD, RMP
+GENERAL PHYSICIAN
+EX-HOUSE OFFICER – CDA HOSPITAL`,
+      image: "https://via.placeholder.com/150",
+    },
+    {
       name: "Mr Hafeez Abbasi",
       role: `Lab Technologist (Ex A.M.C) A.F.I.P CMH & FFH`,
       image: "https://via.placeholder.com/150",

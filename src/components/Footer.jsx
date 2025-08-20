@@ -25,14 +25,14 @@ const Footer = () => {
 
           {/* Social Media Icons */}
           <div className="flex space-x-4">
-            {/* <a
-              href="https://www.facebook.com/"
+            <a
+              href="https:/facebook.com/mariamdiagnosticcenter"
               target="_blank"
               rel="noreferrer"
               className="text-gray-600 hover:text-blue-600 transition-colors"
             >
               <FaFacebookF size={20} />
-            </a> */}
+            </a>
             {/* facebook icon */}
             {/* <a
               href="https://twitter.com/"

@@ -9,7 +9,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination, Autoplay } from "swiper/modules";
-
+import { Typewriter } from "react-simple-typewriter";
 const reviews = [
   {
     name: "Afshan Abbasi",
@@ -38,40 +38,24 @@ const App = () => {
   </Helmet>;
   const cardData = [
     {
-      title: "Blood CP (Complete Picture)",
+      title: "Blood Tests (CBC & Full Lab)",
       description: (
         <p style={{ textAlign: "justify" }}>
-          Complete blood picture (Complete Blood Count) is a common test that
-          measures red blood cells, white blood cells, platelets and other
-          components of your blood. <br /> It helps detect conditions such as
-          anemia, infection, and various blood disorders by revealing
-          abnormalities in cell counts or morphology.
+          We perform all kinds of blood tests — from CBC/Complete Blood Picture
+          to Vitamin D/B12 and more on modern analyzers.
         </p>
       ),
       imageUrl:
         "https://images.pexels.com/photos/4047146/pexels-photo-4047146.jpeg?auto=compress&cs=tinysrgb&w=600",
     },
-    {
-      title: "ECG (Electro Cardiogram)",
-      description: (
-        <p style={{ textAlign: "justify" }}>
-          Electrocardiogram (ECG or EKG) is a diagnostic test that records the
-          electrical activity of the heart over time. It helps detect heart
-          conditions, monitor heart rhythm, and assess the overall heart health.
-        </p>
-      ),
-      imageUrl:
-        "https://images.pexels.com/photos/6129683/pexels-photo-6129683.jpeg?auto=compress&cs=tinysrgb&w=600",
-    },
+
     {
       title: "Ultra Sound",
       description: (
         <p style={{ textAlign: "justify" }}>
-          Ultrasound is a medical imaging technique that uses high-frequency
-          sound waves to create real-time images of the body's internal
-          structures. <br />
-          It is commonly used for diagnosing conditions, monitoring pregnancies,
-          and guiding certain medical procedures.
+          Real-time imaging using safe sound waves (no radiation). We perform
+          abdominal, pelvic/gyne, obstetric, thyroid and soft-tissue scans to
+          diagnose and guide treatment.
         </p>
       ),
 
@@ -79,38 +63,60 @@ const App = () => {
         "https://images.pexels.com/photos/7088840/pexels-photo-7088840.jpeg?auto=compress&cs=tinysrgb&w=600",
     },
     {
+      title: "ECG (Electro Cardiogram)",
+      description: (
+        <p style={{ textAlign: "justify" }}>
+          A quick, painless test that records your heart’s electrical activity
+          in minutes. Helps detect rhythm problems and heart strain — same-day
+          report.
+        </p>
+      ),
+      imageUrl:
+        "https://images.pexels.com/photos/6129683/pexels-photo-6129683.jpeg?auto=compress&cs=tinysrgb&w=600",
+    },
+    {
       title: "Child Specialist",
       description: (
         <p style={{ textAlign: "justify" }}>
-          At MDC, our Child Specialist is dedicated to providing comprehensive
-          healthcare for infants, children, and adolescents. We ensure your
-          child’s health, development, and wellbeing are carefully monitored and
-          supported.
+          Complete care for infants, children and teens — fever and infections,
+          growth & nutrition, allergies, and vaccination guidance in a
+          child-friendly environment.
         </p>
       ),
       imageUrl:
         "https://images.pexels.com/photos/3662664/pexels-photo-3662664.jpeg?auto=compress&cs=tinysrgb&w=600", // or your own image
     },
     {
-      title: "Gynecologist",
+      title: "Gynecological Consultation",
       description: (
         <p style={{ textAlign: "justify" }}>
-          Our experienced Gynecologist offers expert care for women’s
-          reproductive health, including pregnancy monitoring, menstrual issues,
-          and overall wellness. We prioritize comfort, trust, and top-quality
-          women’s healthcare.
+          Women’s health services including antenatal care, menstrual problems,
+          PCOS, infections and family planning - with privacy, comfort and
+          evidence-based care.
         </p>
       ),
       imageUrl:
         "https://images.pexels.com/photos/7088526/pexels-photo-7088526.jpeg?auto=compress&cs=tinysrgb&w=600", // or your own image
     },
     {
+      title: "General Physician",
+      description: (
+        <p style={{ textAlign: "justify" }}>
+          Our experienced General Physician delivers primary care. Diagnose and
+          treats common illnesses, manages diabetes/hypertension, provides
+          preventive checkups and refers to specialists when needed.
+        </p>
+      ),
+      imageUrl:
+        "https://images.pexels.com/photos/8376154/pexels-photo-8376154.jpeg", // or your own image
+    },
+    {
       title: "Free Home Sampling",
       description: (
         <p style={{ textAlign: "justify" }}>
-          We offer a unique free home sampling service, connecting patients in
-          the Barakaho region with quality care. Experience convenience and
-          trusted service right at your doorstep!
+          ree home blood sample collection in Bhara Kahu and nearby areas. Book
+          via call/WhatsApp — trained phlebotomists, sterile kits, and reports
+          delivered on WhatsApp
         </p>
       ),
       imageUrl: (
@@ -129,9 +135,8 @@ const App = () => {
       title: "Experienced Medical Team",
       description: (
         <p style={{ textAlign: "justify" }}>
-          Our diagnostic center has a skilled and experienced team ready to care
-          for and support our patients. We are here to provide the best service
-          for your health needs!
+          Skilled doctors and lab technologists using modern equipment to
+          provide accurate diagnostics and caring treatment
         </p>
       ),
 
@@ -139,14 +144,11 @@ const App = () => {
         "https://images.pexels.com/photos/1170979/pexels-photo-1170979.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
     },
     {
-      title: "Our First Center",
+      title: "MDC Bhara Kahu - Our First Center",
       description: (
         <p style={{ textAlign: "justify" }}>
-          We are proud to announce the opening of our first diagnostic center
-          branch in the Islamabad. Our skilled and experienced team is ready to
-          provide the best care for your health needs. This is just the
-          beginning, as we plan to expand our services to every city across
-          Pakistan in the near future!
+          Proudly serving Islamabad from our Bhara Kahu center. We plan to
+          expand across Pakistan.
         </p>
       ),
       imageUrl: require("./pics/Faisal_mosque_1.jpg"),
@@ -158,6 +160,7 @@ const App = () => {
     <div>
       {/* Animated text container */}
       <motion.div
+        cursorBlinking={false}
         initial={{ opacity: 0, y: 40, scale: 0.9 }}
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 1.8, ease: "easeOut" }}
@@ -165,7 +168,7 @@ const App = () => {
         className="flex justify-center items-center h-screen"
       >
         <div className="flex flex-col items-center text-center px-4">
-          {/* Heading with delayed animation for text appearance */}
+          {/* Keep Heading Static */}
           <motion.h1
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -174,18 +177,32 @@ const App = () => {
           >
             Mariam Diagnostic Center
           </motion.h1>
-          {/* Sub-heading with staggered text animation */}
+
+          {/* Animate Subheading (Typewriter) */}
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 1.2, ease: "easeOut" }}
             className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-600"
           >
-            MDC Your Trusted Diagnostic Center
+            <Typewriter
+              words={[
+                "MDC Your Trusted Diagnostic Center",
+                "Best Diagnostic Center in Bhara Kahu",
+                "Quality Services",
+                "MDC Your Trusted Diagnostic Center",
+              ]}
+              loop={1} // run through sequence once
+              cursor
+              cursorStyle="|"
+              typeSpeed={80}
+              deleteSpeed={50}
+              delaySpeed={1200}
+              cursorBlinking={false}
+            />
           </motion.h2>
         </div>
       </motion.div>
-
       {/* Cards */}
       <div className="flex flex-wrap justify-center">
         {cardData.map((card, index) => (
