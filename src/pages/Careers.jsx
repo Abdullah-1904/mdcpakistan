@@ -15,7 +15,7 @@ import {
 
 // ---------- Helpers ----------
 const waLink = () =>
-  `https://wa.me/923121576125?text=${encodeURIComponent(
+  `https://wa.me/923306326321?text=${encodeURIComponent(
     `Hello MDC, I’d like to apply for a job. Here is my CV:`
   )}`;
 
@@ -321,7 +321,7 @@ function Careers() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Phone className="h-4 w-4" /> 0312‑1576125
+                <Phone className="h-4 w-4" /> 0330 6326321
               </Button>
             </CardBody>
           </Card>
