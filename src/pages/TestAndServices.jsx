@@ -7,7 +7,7 @@ const TestAndServices = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <Helmet>
-        <title>Test and Services - Mariam Diagnostic Center</title>
+        <title>Test and Services - Mariam Diagnostic Center (MDC)</title>
         <meta
           name="description"
           content="Learn more about Mariam Diagnostic Center, a trusted name in diagnostics since 2013."

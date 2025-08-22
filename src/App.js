@@ -34,7 +34,7 @@ const App = () => {
       name="description"
       content="Best Diagnostic Center in Islamabad catering to patients with care"
     />
-    <title>Mariam Diagnostic Center</title>
+    <title>Home - Mariam Diagnostic Center (MDC)</title>
   </Helmet>;
   const cardData = [
     {
@@ -114,9 +114,9 @@ const App = () => {
       title: "Free Home Sampling",
       description: (
         <p style={{ textAlign: "justify" }}>
-          ree home blood sample collection in Bhara Kahu and nearby areas. Book
-          via call/WhatsApp — trained phlebotomists, sterile kits, and reports
-          delivered on WhatsApp
+          Free home blood sample collection in Bhara Kahu area. Book via
+          call/WhatsApp - our phlebotomists with sterile kits will be reach at
+          your given address and reports delivered on WhatsApp.
         </p>
       ),
       imageUrl: (
@@ -135,8 +135,8 @@ const App = () => {
       title: "Experienced Medical Team",
       description: (
         <p style={{ textAlign: "justify" }}>
-          Skilled doctors and lab technologists using modern equipment to
-          provide accurate diagnostics and caring treatment
+          Skilled doctors and lab technologists using modern equipment, provide
+          accurate diagnostics and caring treatment.
         </p>
       ),
 

@@ -16,7 +16,7 @@ import {
 // ---------- Helpers ----------
 const waLink = () =>
   `https://wa.me/923306326321?text=${encodeURIComponent(
-    `Hello MDC, I’d like to apply for a job. Here is my CV:`
+    `Hello Mariam Diagnostic Center Hiring Department, I’d like to apply for a job. Here is my CV:`
   )}`;
 
 const emailLink = () =>
