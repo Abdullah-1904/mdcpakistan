@@ -2,416 +2,366 @@ import React from "react";
 import { motion } from "framer-motion";
 import Typewriter from "typewriter-effect";
 import {
-  Mail,
-  Phone,
   MapPin,
   Clock,
+  CheckCircle2,
+  Phone,
+  Mail,
   ShieldCheck,
   HeartPulse,
   Users,
-  Sparkles,
-  Send,
 } from "lucide-react";
 
-// ---------- Helpers ----------
-const waLink = () =>
-  `https://wa.me/923306326321?text=${encodeURIComponent(
-    `Hello Mariam Diagnostic Center Hiring Department, I’d like to apply for a job. Here is my CV:`
+/**
+ * MDC Careers – Multi‑role Hiring Page (Poster style per job)
+ * Tailwind + Framer Motion + lucide-react icons.
+ *
+ * Updates per request:
+ *  - Removed clinician illustration from all jobs (now and future).
+ *  - Jobs display two per row on md+ screens (md:grid-cols-2).
+ *  - Each job renders the same poster style: TITLE + (BADGE) + pills + checks.
+ *  - Open Applications CTA kept so anyone can email a CV anytime.
+ */
+
+// ---------- Editable contact info ----------
+const MDC = {
+  site: "https://mdcpakistan.com",
+  email: "official@mdcpakistan.com",
+  phoneDisplay: "0312 1576125",
+  // WhatsApp international format without +, spaces or dashes
+  waNumberIntl: "923121576125",
+};
+
+// WhatsApp / Email helpers
+const waLink = (message) =>
+  `https://wa.me/${MDC.waNumberIntl}?text=${encodeURIComponent(
+    message ||
+      "Hello MDC Hiring Team, I’d like to apply for a role at MDC. Here is my CV:"
   )}`;
 
-const emailLink = () =>
-  `mailto:official@mdcpakistan.com?subject=${encodeURIComponent(
-    `Job Application: @ MDC`
-  )}&body=${encodeURIComponent(
-    `Assalam o Alaikum,\n\nI’d like to apply for the “Name of the role” at Mariam Diagnostic Center (MDC). Please find my CV attached.\n\nName:\nPhone:\nExperience:\n\nRegards,\n`
-  )}`;
+const emailLink = ({ subject, body }) =>
+  `mailto:${MDC.email}?subject=${encodeURIComponent(
+    subject
+  )}&body=${encodeURIComponent(body)}`;
 
+// ---------- Jobs data ----------
+// Add roles here; each one will render in the same poster layout.
 const jobs = [
   {
-    id: "receptionist",
-    title: "Receptionist",
-    description:
-      "Friendly, organized front-desk professional to manage patient flow and appointments.",
-    timing: "Morning",
+    id: "radiologist",
+    title: "Radiologist",
+    badge: "PMDC Registered",
+    experience: "Minimum 2 years of experience",
     location: "Bhara Kahu, Islamabad",
-    perks: [
-      "Patient-first culture",
-      "Growth mindset",
-      "Respectful environment",
+    timing: "Morning & Evening",
+    requirements: [
+      "PMDC registration (mandatory)",
+      "Ultrasound expertise: OB/Gyn, Abdomen, KUB; Doppler preferred",
+      "X-ray / CT / MRI reporting (preferred)",
+      "Competitive salary",
+      "Female candidates are encouraged to apply",
     ],
+    blurb:
+      "Lead high‑quality imaging and reporting at MDC using modern ultrasound and digital workflows.",
   },
-  // Example: add more roles easily
-  // {
-  //   id: "medical-officer",
-  //   title: "Medical Officer (MBBS)",
-  //   description:
-  //     "MBBS with ultrasound & gyne OPD experience.",
-  //   timing: "Mon–Sat, 9:00 AM – 2:00 PM",
-  //   location: "Bhara Kahu, Islamabad",
-  //   perks: ["Hands-on ultrasound", "Mentorship", "Modern equipment"],
-  // },
+  {
+    id: "pathologist",
+    title: "Pathologist",
+    badge: "PMDC Registered",
+    experience: "Minimum 1 year of experience",
+    location: "Bhara Kahu, Islamabad",
+    timing: "Morning / Evening",
+    requirements: [
+      "PMDC registration (mandatory)",
+      "Expertise in any: Hematology, Biochemistry, Microbiology",
+      "Histopathology/reporting (preferred)",
+      "Supervision of lab, verifications",
+      "Competitive salary",
+    ],
+    blurb:
+      "Oversee lab quality, verifications and reporting across core disciplines.",
+  },
+  // ← Add more roles later by copying the same object shape.
 ];
 
-// ---------- Decorative Background SVG ----------
-const BgBlob = () => (
-  <svg
-    aria-hidden="true"
-    className="pointer-events-none absolute inset-x-0 -top-24 -z-10 h-[420px] w-full opacity-30"
-    viewBox="0 0 1108 632"
-    preserveAspectRatio="none"
-  >
-    <defs>
-      <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
-        <stop offset="0%" stopColor="#ef4444" />
-        <stop offset="100%" stopColor="#1d4ed8" />
-      </linearGradient>
-    </defs>
-    <path
-      fill="url(#g)"
-      d="M0 120C140 -40 370 -40 570 120s420 160 538 60v452H0V120z"
-    />
-  </svg>
-);
-
-// ---------- Small UI atoms (no external UI kit) ----------
-const Badge = ({ children }) => (
-  <span className="inline-flex items-center gap-1 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700">
-    {children}
+// ---------- UI atoms ----------
+const Pill = ({ icon: Icon, children }) => (
+  <span className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 shadow-sm">
+    {Icon && <Icon className="h-4 w-4" />} {children}
   </span>
 );
 
-const Card = ({ children, className = "" }) => (
-  <div
-    className={`rounded-2xl border border-slate-200 bg-white shadow-sm ${className}`}
-  >
-    {children}
-  </div>
-);
+const ButtonLink = ({ href, children, tone = "primary", ariaLabel }) => {
+  const tones = {
+    primary:
+      "bg-blue-700 hover:bg-blue-800 focus:ring-blue-700 text-white border-transparent",
+    success:
+      "bg-green-600 hover:bg-green-700 focus:ring-green-600 text-white border-transparent",
+    ghost:
+      "bg-white hover:bg-slate-50 border-slate-300 text-slate-700 focus:ring-slate-400",
+  };
+  return (
+    <a
+      href={href}
+      aria-label={ariaLabel}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`inline-flex items-center justify-center gap-2 rounded-xl border px-5 py-2.5 text-sm font-semibold shadow-sm transition focus:outline-none focus:ring-2 focus:ring-offset-2 ${tones[tone]}`}
+    >
+      {children}
+    </a>
+  );
+};
 
-const CardBody = ({ children, className = "" }) => (
-  <div className={`p-6 ${className}`}>{children}</div>
-);
+// Poster-style card used for each job
+const JobPoster = ({ job }) => (
+  <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+    <h2 className="text-4xl font-extrabold leading-tight text-slate-900 md:text-5xl">
+      <span className="block text-slate-900">{job.title.toUpperCase()}</span>
+      <span className="mt-1 block text-2xl font-black tracking-wide text-blue-800 md:text-3xl">
+        ({job.badge.toUpperCase()})
+      </span>
+    </h2>
+    <p className="mt-3 text-sm font-semibold uppercase tracking-wide text-slate-500">
+      {job.experience}
+    </p>
 
-const Button = ({
-  as: As = "a",
-  href,
-  onClick,
-  children,
-  className = "",
-  ...props
-}) => (
-  <As
-    href={href}
-    onClick={onClick}
-    {...props}
-    className={`inline-flex items-center justify-center gap-2 rounded-xl border border-transparent px-4 py-2 text-sm font-semibold shadow-sm transition hover:shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 ${className}`}
-  >
-    {children}
-  </As>
+    <div className="mt-4 flex flex-wrap items-center gap-3">
+      <Pill icon={MapPin}>{job.location}</Pill>
+      <Pill icon={Clock}>{job.timing}</Pill>
+    </div>
+
+    <motion.ul
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.5 }}
+      className="mt-6 space-y-3 text-slate-700"
+    >
+      {job.requirements.map((item) => (
+        <li key={item} className="flex items-start gap-3">
+          <CheckCircle2 className="mt-0.5 h-5 w-5 flex-none text-blue-700" />
+          <span>{item}</span>
+        </li>
+      ))}
+    </motion.ul>
+
+    <div className="mt-6 flex flex-wrap items-center gap-3">
+      <ButtonLink
+        tone="success"
+        href={waLink(
+          `Hello, I’d like to apply for the ${job.title} role at MDC. Here is my CV:`
+        )}
+        ariaLabel={`Apply for ${job.title} via WhatsApp`}
+      >
+        <Phone className="h-4 w-4" /> Apply via WhatsApp – {MDC.phoneDisplay}
+      </ButtonLink>
+      <ButtonLink
+        tone="primary"
+        href={emailLink({
+          subject: `Job Application: ${job.title} – MDC`,
+          body: `Assalam o Alaikum,
+
+I’d like to apply for the ${job.title} role at Mariam Diagnostic Center (MDC). Please find my CV attached.
+
+Name:
+Phone:
+Experience:
+
+Regards,
+`,
+        })}
+        ariaLabel={`Apply for ${job.title} via Email`}
+      >
+        <Mail className="h-4 w-4" /> Apply via Email
+      </ButtonLink>
+    </div>
+  </section>
 );
 
 // ---------- Page ----------
-function Careers() {
+export default function Careers() {
   return (
-    <main className="relative min-h-screen bg-gradient-to-b from-slate-50 via-white to-white text-slate-800">
-      <BgBlob />
+    <main className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-white text-slate-800">
+      {/* HIRING ribbon once at the top */}
+      <section className="py-8">
+        <div className="relative mx-auto w-full max-w-6xl px-6">
+          <div className="rounded-2xl bg-gradient-to-r from-red-600 via-red-500 to-red-700 px-6 py-4 shadow-lg">
+            <p className="text-center text-2xl font-extrabold tracking-widest text-white md:text-3xl">
+              HIRING
+            </p>
+          </div>
+        </div>
+      </section>
 
-      {/* Hero */}
-      <section className="mx-auto w-full max-w-6xl px-6 pt-24 pb-10">
-        <h1 className="mx-auto max-w-6xl text-center text-4xl font-extrabold leading-tight md:text-5xl">
-          <span className="bg-gradient-to-r from-red-600 to-blue-700 bg-clip-text text-red-600 ">
-            <Typewriter
-              onInit={(typewriter) => {
-                typewriter
-                  .typeString("Careers at Mariam Diagnostic Center — MDC")
-                  .callFunction(() => {
-                    const cur = document.querySelector(".Typewriter__cursor");
-                    if (cur) cur.style.display = "none"; // hide cursor after typing
-                  })
-                  .start();
-              }}
-              options={{
-                autoStart: true,
-                loop: false,
-                delay: 60,
-                deleteSpeed: 0,
-              }}
-            />
-          </span>
-        </h1>
+      {/* Jobs grid – 2 per row on md+ */}
+      <section className="mx-auto w-full max-w-6xl px-6 pb-6">
+        <div className="grid gap-8 md:grid-cols-2">
+          {jobs.map((job) => (
+            <JobPoster key={job.id} job={job} />
+          ))}
+        </div>
+      </section>
 
-        <motion.p
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mx-auto mt-4 max-w-3xl text-center text-base text-slate-600 md:text-lg"
-        >
-          Join compassionate professionals delivering quality healthcare at MDC
-          Bhara Kahu, Islamabad.
-        </motion.p>
+      {/* Divider */}
+      <div className="mx-auto my-2 w-full max-w-6xl px-6">
+        <div className="h-px w-full bg-gradient-to-r from-slate-200 via-slate-300 to-slate-200" />
+      </div>
 
-        {/* Quick stats / value props */}
-        <div className="mx-auto mt-8 grid max-w-4xl grid-cols-2 gap-3 sm:grid-cols-4">
+      {/* VALUE PROPS */}
+      <section className="mx-auto w-full max-w-6xl px-6 py-8">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
           {[
-            { Icon: ShieldCheck, label: "Respectful culture" },
-            { Icon: HeartPulse, label: "Patient-first" },
-            { Icon: Users, label: "Supportive team" },
-            { Icon: Sparkles, label: "Growth focused" },
-          ].map(({ Icon, label }, i) => (
+            {
+              icon: <ShieldCheck className="h-5 w-5" />,
+              title: "Respectful culture",
+              body: "Inclusive team with integrity and clear SOPs.",
+            },
+            {
+              icon: <HeartPulse className="h-5 w-5" />,
+              title: "Patient‑first",
+              body: "Serve our community with quality care and empathy.",
+            },
+            {
+              icon: <Users className="h-5 w-5" />,
+              title: "Growth focused",
+              body: "Mentorship and modern ultrasound equipment.",
+            },
+          ].map((b) => (
             <div
-              key={i}
-              className="flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white/70 px-3 py-2 text-sm backdrop-blur"
+              key={b.title}
+              className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
             >
-              <Icon className="h-4 w-4" />
-              <span>{label}</span>
+              <div className="flex items-start gap-3">
+                <div className="rounded-lg bg-slate-100 p-2">{b.icon}</div>
+                <div>
+                  <h3 className="font-semibold text-slate-900">{b.title}</h3>
+                  <p className="mt-1 text-sm text-slate-600">{b.body}</p>
+                </div>
+              </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Openings */}
-      <section
-        aria-labelledby="openings"
-        className="mx-auto w-full max-w-6xl px-6 pb-16"
-      >
-        <h2 id="openings" className="mb-4 text-2xl font-bold text-blue-700">
-          Current Openings
-        </h2>
+      {/* OPEN APPLICATIONS – send CV even if not hiring */}
+      <section className="mx-auto w-full max-w-6xl px-6 pb-28">
+        <div className="rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm">
+          <h2 className="text-xl font-bold text-slate-900">
+            Didn’t find your role?
+          </h2>
+          <p className="mx-auto mt-2 max-w-2xl text-sm text-slate-600">
+            We welcome general applications. Send your CV to{" "}
+            <span className="font-semibold">{MDC.email}</span> and we’ll reach
+            out when a suitable role opens.
+          </p>
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
+            <ButtonLink
+              tone="primary"
+              href={emailLink({
+                subject: "General Application – MDC",
+                body: `Assalam o Alaikum,
 
-        <div className="grid gap-6 md:grid-cols-2">
-          {jobs.map((job, idx) => (
-            <motion.div
-              key={job.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.45, delay: idx * 0.05 }}
+I’d like to submit my CV for future openings at Mariam Diagnostic Center (MDC).
+
+Name:
+Phone:
+Target Role(s):
+Experience:
+
+Regards,
+`,
+              })}
+              ariaLabel="Send general application via email"
             >
-              <Card className="relative overflow-hidden">
-                <div
-                  className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-red-600 to-blue-700"
-                  aria-hidden="true"
-                />
-                <CardBody>
-                  <div className="flex flex-wrap items-center justify-between gap-3">
-                    <h3 className="text-xl font-bold text-red-700">
-                      {job.title}
-                    </h3>
-                    <div className="flex flex-wrap gap-2">
-                      {job.perks?.slice(0, 3).map((p) => (
-                        <Badge key={p}>{p}</Badge>
-                      ))}
-                    </div>
-                  </div>
-
-                  <p className="mt-2 text-slate-700">{job.description}</p>
-
-                  <div className="mt-4 grid grid-cols-1 gap-3 text-sm sm:grid-cols-2">
-                    <div className="flex items-center gap-2 text-slate-600">
-                      <Clock className="h-4 w-4" />
-                      <span>
-                        <span className="font-medium">Timing:</span>{" "}
-                        {job.timing}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2 text-slate-600">
-                      <MapPin className="h-4 w-4" />
-                      <span>
-                        <span className="font-medium">Location:</span>{" "}
-                        {job.location}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="mt-5 flex flex-wrap items-center gap-3">
-                    <Button
-                      as="a"
-                      href={waLink()}
-                      className="bg-green-600 text-white hover:bg-green-700 focus:ring-green-600"
-                      aria-label={`Apply for  via WhatsApp`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Phone className="h-4 w-4" />
-                      Apply via WhatsApp
-                    </Button>
-                    <Button
-                      as="a"
-                      href={emailLink()}
-                      className="bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-600"
-                      aria-label={`Apply for ${job.title} via Email`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Mail className="h-4 w-4" />
-                      Apply via Email
-                    </Button>
-                  </div>
-                </CardBody>
-              </Card>
-            </motion.div>
-          ))}
+              <Mail className="h-4 w-4" /> Send your CV via Email
+            </ButtonLink>
+          </div>
         </div>
       </section>
 
-      {/* Benefits */}
-      <section
-        aria-labelledby="benefits"
-        className="mx-auto w-full max-w-6xl px-6 pb-16"
-      >
-        <h2 id="benefits" className="mb-6 text-2xl font-bold text-blue-700">
-          Why join MDC
-        </h2>
-        <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-          {[
-            {
-              icon: <ShieldCheck className="h-5 w-5" />,
-              title: "Respect & integrity",
-              body: "A supportive, inclusive workplace where your voice matters.",
-            },
-            {
-              icon: <HeartPulse className="h-5 w-5" />,
-              title: "Impactful work",
-              body: "Serve the community with quality, patient‑first care.",
-            },
-            {
-              icon: <Users className="h-5 w-5" />,
-              title: "Learning & growth",
-              body: "Mentorship, modern equipment, and real responsibility.",
-            },
-          ].map((b) => (
-            <Card key={b.title}>
-              <CardBody className="flex items-start gap-3">
-                <div className="rounded-lg bg-slate-100 p-2">{b.icon}</div>
-                <div>
-                  <h3 className="font-semibold">{b.title}</h3>
-                  <p className="mt-1 text-sm text-slate-600">{b.body}</p>
-                </div>
-              </CardBody>
-            </Card>
-          ))}
-        </div>
-      </section>
-
-      {/* How to Apply */}
-      <section
-        aria-labelledby="apply"
-        className="mx-auto w-full max-w-6xl px-6 pb-28"
-      >
-        <h2 id="apply" className="mb-6 text-2xl font-bold text-blue-700">
-          Apply in 2 easy ways
-        </h2>
-        <div className="grid gap-6 md:grid-cols-2">
-          <Card>
-            <CardBody className="text-center">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-                alt="WhatsApp"
-                className="mx-auto h-12 w-12"
-                loading="lazy"
-              />
-              <h3 className="mt-3 text-lg font-semibold">WhatsApp</h3>
-              <p className="mt-1 text-sm text-slate-600">
-                Send your CV and role name to our official number.
-              </p>
-              <Button
-                as="a"
-                href={waLink("")}
-                className="mt-4 bg-green-600 text-white hover:bg-green-700 focus:ring-green-600"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Phone className="h-4 w-4" /> 0330 6326321
-              </Button>
-            </CardBody>
-          </Card>
-          <Card>
-            <CardBody className="text-center">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png"
-                alt="Gmail"
-                className="mx-auto h-12 w-12"
-                loading="lazy"
-              />
-              <h3 className="mt-3 text-lg font-semibold">Email</h3>
-              <p className="mt-1 text-sm text-slate-600">
-                Email your CV with the job title in the subject line.
-              </p>
-              <Button
-                as="a"
-                href={emailLink("")}
-                className="mt-4 bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-600"
-              >
-                <Mail className="h-4 w-4" /> official@mdcpakistan.com
-              </Button>
-            </CardBody>
-          </Card>
-        </div>
-      </section>
-
-      {/* Sticky CTA Bar */}
+      {/* Sticky CTA */}
       <div className="fixed inset-x-4 bottom-4 z-50 mx-auto max-w-3xl rounded-2xl border border-slate-200 bg-white/95 p-3 shadow-lg backdrop-blur">
         <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-between">
           <p className="text-sm font-medium text-slate-700">
-            Ready to apply? Reach us on WhatsApp or Email.
+            Ready to apply or share your CV?
           </p>
           <div className="flex flex-wrap items-center gap-2">
-            <Button
-              as="a"
+            <ButtonLink
+              tone="success"
               href={waLink()}
-              className="bg-green-600 text-white hover:bg-green-700 focus:ring-green-600"
-              target="_blank"
-              rel="noopener noreferrer"
+              ariaLabel="Open WhatsApp"
             >
               <Phone className="h-4 w-4" /> WhatsApp
-            </Button>
-            <Button
-              as="a"
-              href={emailLink()}
-              className="bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-600"
+            </ButtonLink>
+            <ButtonLink
+              tone="primary"
+              href={emailLink({
+                subject: "General Application – MDC",
+                body: `Assalam o Alaikum,
+
+I’d like to submit my CV for openings at MDC. Please find it attached.
+
+Name:
+Phone:
+Target Role(s):
+Experience:
+
+Regards,
+`,
+              })}
+              ariaLabel="Open Email"
             >
-              <Mail className="h-4 w-4" /> Email
-            </Button>
+              <Mail className="h-4 w-4" /> Email CV
+            </ButtonLink>
           </div>
         </div>
       </div>
 
-      {/* SEO: JSON-LD for a JobPosting (helps Google Jobs) */}
+      {/* SEO: JSON‑LD for ALL JobPostings */}
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "JobPosting",
-            title: jobs[0]?.title || "Job at MDC",
-            description: jobs[0]?.description,
-            datePosted: new Date().toISOString().slice(0, 10),
-            employmentType: "FULL_TIME",
-            hiringOrganization: {
-              "@type": "Organization",
-              name: "Mariam Diagnostic Center (MDC)",
-              sameAs: "https://mdcpakistan.com",
-            },
-            jobLocation: {
-              "@type": "Place",
-              address: {
-                "@type": "PostalAddress",
-                addressLocality: "Bhara Kahu",
-                addressRegion: "Islamabad Capital Territory",
-                addressCountry: "PK",
+          __html: JSON.stringify(
+            jobs.map((job) => ({
+              "@context": "https://schema.org",
+              "@type": "JobPosting",
+              title: `${job.title} (${job.badge})`,
+              description: job.blurb,
+              datePosted: new Date().toISOString().slice(0, 10),
+              employmentType: "FULL_TIME",
+              jobLocation: {
+                "@type": "Place",
+                address: {
+                  "@type": "PostalAddress",
+                  addressLocality: "Bhara Kahu",
+                  addressRegion: "Islamabad Capital Territory",
+                  addressCountry: "PK",
+                },
               },
-            },
-            applicantLocationRequirements: {
-              "@type": "Country",
-              name: "Pakistan",
-            },
-            directApply: true,
-          }),
+              hiringOrganization: {
+                "@type": "Organization",
+                name: "Mariam Diagnostic Center (MDC)",
+                sameAs: MDC.site,
+              },
+              directApply: true,
+              applicantLocationRequirements: {
+                "@type": "Country",
+                name: "Pakistan",
+              },
+              workHours: job.timing,
+            }))
+          ),
         }}
       />
+
+      {/* Page Title animator (discreet) */}
+      <div className="sr-only" aria-hidden>
+        <Typewriter
+          onInit={(t) => t.typeString("Careers at MDC").start()}
+          options={{ autoStart: true, loop: false, delay: 60, deleteSpeed: 0 }}
+        />
+      </div>
     </main>
   );
 }
-
-export default Careers;

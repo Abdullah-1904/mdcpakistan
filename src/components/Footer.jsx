@@ -5,6 +5,7 @@ import {
   FaLinkedinIn,
   FaTwitter,
 } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 const Footer = () => {
   return (
@@ -34,14 +35,14 @@ const Footer = () => {
               <FaFacebookF size={20} />
             </a>
             {/* facebook icon */}
-            {/* <a
-              href="https://twitter.com/"
+            <a
+              href="https://x.com/mdcpk"
               target="_blank"
               rel="noreferrer"
-              className="text-gray-600 hover:text-blue-400 transition-colors"
+              className="text-gray-600 hover:text-black transition-colors"
             >
-              <FaTwitter size={20} />
-            </a> */}
+              <FaXTwitter size={20} />
+            </a>
             {/* twitter */}
             <a
               href="https://www.instagram.com/mariamdiagnosticcenter/"

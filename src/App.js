@@ -41,8 +41,8 @@ const App = () => {
       title: "Blood Tests (CBC & Full Lab)",
       description: (
         <p style={{ textAlign: "justify" }}>
-          We perform all kinds of blood tests — from CBC/Complete Blood Picture
-          to Vitamin D/B12 and more on modern analyzers.
+          We perform all kinds of blood tests — from CBC/Complete Blood Count to
+          Vitamin D/B12 and more on modern analyzers.
         </p>
       ),
       imageUrl:
