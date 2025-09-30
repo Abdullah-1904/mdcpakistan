@@ -64,23 +64,24 @@ const jobs = [
     blurb:
       "Lead high‑quality imaging and reporting at MDC using modern ultrasound and digital workflows.",
   },
-  {
-    id: "pathologist",
-    title: "Pathologist",
-    badge: "PMDC Registered",
-    experience: "Minimum 1 year of experience",
-    location: "Bhara Kahu, Islamabad",
-    timing: "Morning / Evening",
-    requirements: [
-      "PMDC registration (mandatory)",
-      "Expertise in any: Hematology, Biochemistry, Microbiology",
-      "Histopathology/reporting (preferred)",
-      "Supervision of lab, verifications",
-      "Competitive salary",
-    ],
-    blurb:
-      "Oversee lab quality, verifications and reporting across core disciplines.",
-  },
+  // {
+  //   id: "pathologist",
+  //   title: "Pathologist",
+  //   badge: "PMDC Registered",
+  //   experience: "Minimum 1 year of experience",
+  //   location: "Bhara Kahu, Islamabad",
+  //   timing: "Morning / Evening",
+  //   requirements: [
+  //     "PMDC registration (mandatory)",
+  //     "Expertise in any: Hematology, Biochemistry, Microbiology",
+  //     "Histopathology/reporting (preferred)",
+  //     "Supervision of lab, verifications",
+  //     "Competitive salary",
+  //   ],
+  //   blurb:
+  //     "Oversee lab quality, verifications and reporting across core disciplines.",
+  // },
+  // =======
   // ← Add more roles later by copying the same object shape.
 ];
 
