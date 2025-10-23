@@ -111,7 +111,7 @@ const App = () => {
         "https://images.pexels.com/photos/8376154/pexels-photo-8376154.jpeg", // or your own image
     },
     {
-      title: "Free Home Sampling",
+      title: "Nearby Home Sampling",
       description: (
         <p style={{ textAlign: "justify" }}>
           Free home blood sample collection in Bhara Kahu area. Book via
